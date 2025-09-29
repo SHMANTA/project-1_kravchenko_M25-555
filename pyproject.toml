@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "project-1_kravchenko_m25-555"
+version = "0.1.0"
+description = ""
+authors = ["SHMANTA <nik.kravchenko.2004@bk.ru>"]
+packages = [
+    { include = "labyrinth_game" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[poetry.group.dev.dependencies]
+ruff = "^0.13.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+project = "labyrinth_game.main:main" 
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+exclude = ["venv", ".venv", "dist", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = [] 

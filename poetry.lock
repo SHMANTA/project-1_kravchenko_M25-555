@@ -1,0 +1,15 @@
+[[package]]
+name = "ruff"
+version = "0.13.2"
+description = "An extremely fast Python linter and code formatter, written in Rust."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.10"
+content-hash = "5f9c10f4b5ae44a35dc5ae0cbfd0be045a96b291f4600c7a6799434140221dd2"
+
+[metadata.files]
+ruff = []
