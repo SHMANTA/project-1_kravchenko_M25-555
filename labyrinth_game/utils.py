@@ -4,6 +4,7 @@ from .constants import COMMANDS, ROOMS
 
 
 def describe_current_room(game_state):
+    """Печатает описание текущей комнаты и её содержимое."""    
     room_name = game_state["current_room"]
     room = ROOMS[room_name]
 
@@ -21,6 +22,7 @@ def describe_current_room(game_state):
 
 
 def get_input(prompt="> "):
+    """Считывает и нормализует ввод пользователя."""
     try:
         return input(prompt).strip().lower()
     except (KeyboardInterrupt, EOFError):
@@ -29,6 +31,7 @@ def get_input(prompt="> "):
 
 
 def solve_puzzle(game_state):
+    """Обрабатывает решение загадки в текущей комнате."""
     current_room = game_state["current_room"]
     room = ROOMS[current_room]
 
@@ -70,6 +73,7 @@ def solve_puzzle(game_state):
 
 
 def attempt_open_treasure(game_state):
+    """Пытается открыть сундук с сокровищами."""
     current_room = game_state["current_room"]
     room = ROOMS[current_room]
 
@@ -105,18 +109,21 @@ def attempt_open_treasure(game_state):
 
 
 def show_help(commands=COMMANDS):
+    """Показывает список доступных команд."""
     print("\nДоступные команды:")
     for cmd, desc in commands.items():
         print(f"  {cmd:<16} - {desc}")
 
 
 def pseudo_random(seed: int, modulo: int) -> int:
+    """Генерирует псевдослучайное число от 0 до modulo."""
     x = math.sin(seed * 12.9898) * 123.5453
     frac = x - math.floor(x)
     return int(frac * modulo)
 
 
 def trigger_trap(game_state):
+    """Активирует ловушку в комнате."""
     print("Ловушка активирована! Пол стал дрожать...")
 
     inventory = game_state["player_inventory"]
@@ -135,6 +142,7 @@ def trigger_trap(game_state):
 
 
 def random_event(game_state):
+    """Запускает случайное событие при перемещении игрока."""
     seed = game_state["steps"]
 
     if pseudo_random(seed, 10) != 0:

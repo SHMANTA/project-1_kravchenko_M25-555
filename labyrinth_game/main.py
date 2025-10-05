@@ -15,12 +15,13 @@ from .utils import (
 
 
 def process_command(game_state, command):
+    """Обрабатывает введённую игроком команду."""
     parts = command.split()
     if not parts:
         return
 
     cmd = parts[0]
-    arg = parts[1] if len(parts) > 1 else None
+    arg = " ".join(parts[1:]) if len(parts) > 1 else None
 
     directions = {"north", "south", "east", "west"}
 

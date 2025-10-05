@@ -3,6 +3,7 @@ from .utils import describe_current_room, random_event
 
 
 def show_inventory(game_state):
+    """Выводит содержимое инвентаря игрока."""
     inventory = game_state["player_inventory"]
     if inventory:
         print("Ваш инвентарь:", ", ".join(inventory))
@@ -11,6 +12,7 @@ def show_inventory(game_state):
 
 
 def move_player(game_state, direction):
+    """Перемещает игрока в указанном направлении."""
     current_room = game_state["current_room"]
     exits = ROOMS[current_room]["exits"]
 
@@ -41,6 +43,7 @@ def move_player(game_state, direction):
 
 
 def take_item(game_state, item_name):
+    """Позволяет игроку взять предмет из комнаты."""
     current_room = game_state["current_room"]
     room_items = ROOMS[current_room]["items"]
 
@@ -53,6 +56,7 @@ def take_item(game_state, item_name):
 
 
 def use_item(game_state, item_name):
+    """Использует предмет из инвентаря игрока."""
     inventory = game_state["player_inventory"]
 
     if item_name not in inventory:
