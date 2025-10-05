@@ -9,6 +9,7 @@ from .utils import (
     attempt_open_treasure,
     describe_current_room,
     get_input,
+    show_help,
     solve_puzzle,
 )
 
@@ -21,6 +22,8 @@ def process_command(game_state, command):
     cmd = parts[0]
     arg = parts[1] if len(parts) > 1 else None
 
+    directions = {"north", "south", "east", "west"}
+
     match cmd:
         case "look":
             describe_current_room(game_state)
@@ -29,6 +32,8 @@ def process_command(game_state, command):
                 move_player(game_state, arg)
             else:
                 print("Куда идти? Используйте: go <направление>")
+        case cmd if cmd in directions:
+            move_player(game_state, cmd)
         case "take":
             if arg:
                 take_item(game_state, arg)
@@ -45,15 +50,21 @@ def process_command(game_state, command):
             else:
                 print("Что использовать? Используйте: use <предмет>")
         case "solve":
-            solve_puzzle(game_state)
+            if game_state["current_room"] == "treasure_room":
+                attempt_open_treasure(game_state)
+            else:
+                solve_puzzle(game_state)
         case "inventory":
             show_inventory(game_state)
+        case "help":
+            show_help()
         case "quit" | "exit":
             print("Вы покинули игру.")
             game_state["game_over"] = True
         case _:
             print(
-                "Неизвестная команда. Доступные: look, go, take, use, solve, inventory, quit"
+                "Неизвестная команда. Доступные:\
+                    look, go, take, use, solve, inventory, quit"
             )
 
 

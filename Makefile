@@ -1,10 +1,10 @@
 install:
 	poetry install
 
-project: 
+project:
 	poetry run project
 
-build: 
+build:
 	poetry build
 
 publish:

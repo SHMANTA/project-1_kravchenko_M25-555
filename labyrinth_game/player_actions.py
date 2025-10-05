@@ -1,5 +1,5 @@
 from .constants import ROOMS
-from .utils import describe_current_room
+from .utils import describe_current_room, random_event
 
 
 def show_inventory(game_state):
@@ -15,9 +15,27 @@ def move_player(game_state, direction):
     exits = ROOMS[current_room]["exits"]
 
     if direction in exits:
-        game_state["current_room"] = exits[direction]
+        next_room = exits[direction]
+
+        if next_room == "treasure_room":
+            if (
+                "treasure_key" in game_state["player_inventory"]
+                or "rusty key" in game_state["player_inventory"]
+            ):
+                print(
+                    "Вы используете найденный ключ,\
+                        чтобы открыть путь в комнату сокровищ."
+                )
+                game_state["current_room"] = next_room
+            else:
+                print("Дверь заперта. Нужен ключ, чтобы пройти дальше.")
+                return
+        else:
+            game_state["current_room"] = next_room
+
         game_state["steps"] += 1
         describe_current_room(game_state)
+        random_event(game_state)
     else:
         print("Нельзя пойти в этом направлении.")
 
