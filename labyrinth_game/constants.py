@@ -78,7 +78,7 @@ ROOMS = {
 
 
 COMMANDS = {
-    "go <direction>": "перейти в направлении (north/south/east/west)",
+    "<direction>": "перейти в направлении (north/south/east/west)",
     "look": "осмотреть текущую комнату",
     "take <item>": "поднять предмет",
     "use <item>": "использовать предмет из инвентаря",
