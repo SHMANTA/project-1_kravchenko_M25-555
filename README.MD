@@ -13,28 +13,27 @@
 ### С помощью poetry:
 ```bash
 poetry install
-
+```
 
 ### С помощью make:
 ```bash
 make install
-
+```
 ## Запуск игры
 
 ### С помощью poetry:
 ```bash
 poetry run project
-
+```
 
 ### С помощью make:
 ```bash
 make project
+```
 
-Усправление героем можно узнать по следующей команде: 
-### С помощью make:
+### Усправление героем можно узнать по следующей команде:
 ```bash
 help
-
+```
 
 [![asciicast](https://asciinema.org/a/RomEJla4GJ4EpOALhi5s5liBb.svg)](https://asciinema.org/a/RomEJla4GJ4EpOALhi5s5liBb)
-https://asciinema.org/a/RomEJla4GJ4EpOALhi5s5liBb
